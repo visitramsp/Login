@@ -1,0 +1,13 @@
+.dash_outer{
+    background: #090c28;
+    /* height: 300px; */
+}
+.side_navbar{
+    width: 100px;
+    /* height: 300px; */
+    background: linear-gradient(to top,#2e3781,#0a0e33,#010317);
+}
+.main_link:hover{
+ width: 100px;
+ border-bottom: 2px solid red;
+}
