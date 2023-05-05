@@ -2,6 +2,12 @@ import React from 'react'
 import '../style/dash.css'
 import { NavLink } from 'react-router-dom'
 const Dashboard = () => {
+  const name=window.localStorage.getItem("name")
+  const LogOutData=()=>{
+   window.localStorage.removeItem("email")
+   window.localStorage.removeItem("name")
+   window.location.href='http://localhost:3000/login'
+  }
   return (
     <div className='dash_outer'>
       <div className='container'>
@@ -46,9 +52,15 @@ const Dashboard = () => {
                         </ul>
                       </li>
                     </ul>
+                    
                   </div>
+                  
                 </div>
-                <a className="navbar-brand text-danger" href="#">Logout</a>
+                <div className='text-white text-end'>{name}</div>
+                <button onClick={LogOutData} className='btn btn-outline-danger'>
+                Logout
+                </button>
+                
               </div>
               
             </nav>

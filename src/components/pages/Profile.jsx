@@ -8,7 +8,7 @@ const Profile = () => {
     <div className='container'>
         <div className='row'>
             <div className='col-12'>
-            <div className=' py-5 text-success'> this is Profile pages</div>
+            <div className=' py-5 text-success text-center'> this is Profile pages</div>
             </div>
         </div>
     </div>

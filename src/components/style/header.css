@@ -3,10 +3,10 @@
     background: url('../images/blues.jpg');
     background-size: cover;
 }
-.inspire{
+.future{
     word-spacing: 4px;
     letter-spacing: 2px;
-    font-size: 22px;
+    font-size: 21px;
     color: rgb(240, 236, 236);
     margin-top: 50vh;
 }
@@ -16,7 +16,8 @@
 .header_box{
     border: 1px solid rgb(167, 166, 166);
     border-radius: 10px;
-    background: linear-gradient(to right,#17135d 10%,#673dd6 40%,#0c1036 60%);
+    /* line-height: 100%; */
+    background: linear-gradient(to right,#0a39a4 10%,#673dd6 40%,#0c1036 70%);
 }
 
 .owner_class{
@@ -42,13 +43,20 @@
     border: 1px solid gray;
     padding: 5px;
     width: 250px;
-}
-.inp_box:focus, input:focus{
     color: white;
 }
+.inp_box:focus, input:focus{
+    /* color: white; */
+    background: transparent;
+}
+.inp_box::placeholder{
+    color: rgb(109, 109, 109);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
 
-.sign_main_box{
-    top: 80px;
+.sign_div{
+    top: 10px;
     left: 60px;
     height: 500px;
     width: 350px;
@@ -56,11 +64,11 @@
     position: relative;
     color: white;
 }
-.sign_midle_box{
+.midle_box{
     height: 475px;
     width: 350px;
     /* background: yellow; */
-    top: 20px;
+    top: 10px;
     position: relative;
     border: 1px solid gray;
     border-radius: 10px;
@@ -72,4 +80,9 @@
 }
 .h12{
     color: white;
+}
+.botton_box{
+    padding-top: 20px;
+    text-align: center;
+    color: rgb(143, 142, 142);
 }

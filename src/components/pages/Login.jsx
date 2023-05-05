@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style/header.css'
 import Header from './Header'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+  const navigation=useNavigate()
+  const [collection, setCollection] = useState([])
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const saveData = () => {
@@ -9,30 +12,43 @@ const Login = () => {
       email: email,
       password: password
     }
-    
-    const url='http://localhost:7080/user/login'
-
-    fetch(url,{
-      headers:{
-        "Content-Type":"application/json"
-      },
-      method:"POST",
-      body:JSON.stringify(user)
-    }).then((response)=>{
-      return response.json()
-    }).then((data)=>{
-      alert("user login success")
+  
+    const loginData = collection.find((elem) => {
+      return elem.email== user.email
+    })
+    if(!undefined){
+    if(loginData.email  == user.email){
+      window.localStorage.setItem("email",user.email)
+      window.localStorage.setItem("name",loginData.name)
       window.location.href='http://localhost:3000/Dashboard/table'
-    }).catch((err)=>{
+    }
+    }
+    else{
+      console.log("no")
+    }
+  }
+
+  useEffect(() => {
+    const url = 'https://63ee44a75e9f1583bdbfa17d.mockapi.io/blogs/blogs'
+    fetch(url).then((response) => {
+      return response.json()
+    }).then((data) => {
+      setCollection(data)
+    }).catch((err) => {
       console.log("error")
     })
+  }, [])
+
+  const singPage=()=>{
+    navigation('/')
   }
+
   return (
     <div className='container-fluid'>
-    <Header />
+      <Header />
       <div className='row'>
         <div className='col-md-6 px-0 mx-0 side-img'>
-          <div className='px-3 text-center inspire'>
+          <div className='px-3 text-center future'>
             <span>INSPIRE BY THE FUTURE:</span><br />
             <span className='fw-bold fs-1'>THE VISION UI DASHBOARD </span>
           </div>
@@ -59,7 +75,9 @@ const Login = () => {
                   <input type='button' onClick={saveData} className='btn btn-primary inp_box fw-bold' value='SIGNIN' />
                 </div>
                 <div className='mt-4'>
-                  <span>Don`t have an account?<span className='fw-bold'>Sign up</span></span>
+                  <span>Don`t have an account?
+                    <button className='btn text-white text-decoration-underline' onClick={singPage}>Sign up</button>
+                  </span>
                 </div>
               </div>
             </div>
